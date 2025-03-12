@@ -1,4 +1,4 @@
-package com.example.demo.user.controller.dto;
+package com.example.demo.user.controller.response;
 
 import com.example.demo.user.domain.UserStatus;
 import lombok.Getter;
