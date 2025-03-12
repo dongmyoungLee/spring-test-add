@@ -1,11 +1,12 @@
 package com.example.demo.service;
 
-import com.example.demo.exception.CertificationCodeNotMatchedException;
-import com.example.demo.exception.ResourceNotFoundException;
-import com.example.demo.model.UserStatus;
-import com.example.demo.model.dto.UserCreateDto;
-import com.example.demo.model.dto.UserUpdateDto;
-import com.example.demo.repository.UserEntity;
+import com.example.demo.common.domain.exception.CertificationCodeNotMatchedException;
+import com.example.demo.common.domain.exception.ResourceNotFoundException;
+import com.example.demo.user.domain.UserStatus;
+import com.example.demo.user.domain.UserCreate;
+import com.example.demo.user.domain.UserUpdate;
+import com.example.demo.user.infrastructure.UserEntity;
+import com.example.demo.user.service.UserService;
 import org.junit.jupiter.api.Test;
 import static org.mockito.ArgumentMatchers.any;
 import org.mockito.BDDMockito;
@@ -86,7 +87,7 @@ public class UserServiceTest {
     @Test
     void userCreaetDTO_를_이용하여_유저를_생성_할_수_있다() {
         // given
-        UserCreateDto userCreateDto = UserCreateDto.builder()
+        UserCreate userCreate = UserCreate.builder()
                 .email("kok202@naver.com")
                 .address("seoul2")
                 .nickname("nick")
@@ -96,7 +97,7 @@ public class UserServiceTest {
         BDDMockito.doNothing().when(javaMailSender).send(any(SimpleMailMessage.class));
 
         // when
-        UserEntity result = userService.create(userCreateDto);
+        UserEntity result = userService.create(userCreate);
 
         // then
         assertThat(result.getId()).isNotNull();
@@ -106,7 +107,7 @@ public class UserServiceTest {
     @Test
     void updateDto_를_이용하여_유저를_수정할_수_있다() {
         // given
-        UserUpdateDto userUpdateDto = UserUpdateDto.builder()
+        UserUpdate userUpdate = UserUpdate.builder()
                 .address("change")
                 .nickname("change")
                 .build();
@@ -115,7 +116,7 @@ public class UserServiceTest {
         BDDMockito.doNothing().when(javaMailSender).send(any(SimpleMailMessage.class));
 
         // when
-        userService.update(1, userUpdateDto);
+        userService.update(1, userUpdate);
 
         // then
         UserEntity user = userService.getById(1);
