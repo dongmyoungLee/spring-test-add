@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 public class MailSenderImpl implements MailSender {
 
     private final JavaMailSender javaMailSender;
-
     @Override
     public void send(String email, String title, String content) {
         SimpleMailMessage message = new SimpleMailMessage();
