@@ -1,4 +1,4 @@
-package com.example.demo.post.controller;
+package com.example.demo.midium;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;

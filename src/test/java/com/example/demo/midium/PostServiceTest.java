@@ -1,4 +1,4 @@
-package com.example.demo.post.service;
+package com.example.demo.midium;
 
 import com.example.demo.post.domain.Post;
 import com.example.demo.post.domain.PostCreate;
