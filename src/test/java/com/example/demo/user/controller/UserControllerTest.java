@@ -4,6 +4,7 @@ package com.example.demo.user.controller;
 import com.example.demo.common.domain.exception.CertificationCodeNotMatchedException;
 import com.example.demo.common.domain.exception.ResourceNotFoundException;
 import com.example.demo.mock.TestContainer;
+import com.example.demo.user.controller.request.UserUpdateRequest;
 import com.example.demo.user.controller.response.MyProfileResponse;
 import com.example.demo.user.controller.response.UserResponse;
 import com.example.demo.user.domain.User;
@@ -150,7 +151,7 @@ public class UserControllerTest {
                 .build());
 
         // when
-        ResponseEntity<MyProfileResponse> result = testContainer.userController.updateMyInfo("kok202@naver.com", UserUpdate.builder()
+        ResponseEntity<MyProfileResponse> result = testContainer.userController.updateMyInfo("kok202@naver.com", UserUpdateRequest.builder()
                         .address("add")
                         .nickname("nick")
                         .build());
